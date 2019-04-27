@@ -1,0 +1,36 @@
+.Container {
+  background-color: "white";
+  border: 2px solid #d3d3d3;
+  border-radius: 0.5em 0 0 0.5em;
+}
+
+.main {
+  background-color: #fafafa36;
+}
+
+.inputIcon {
+  background-color: dimgrey;
+  color: white;
+}
+
+.CardDiv {
+  border-radius: 0.5em;
+}
+
+@media screen and (min-width: 992px) {
+  .leftCardDiv {
+    border-radius: 0.5em 0 0 0.5em;
+  }
+  .rightCardDiv {
+    border-radius: 0 0.5em 0.5em 0;
+  }
+  .footerCard {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .fondo {
+    background-color: #eaeaeaea;
+  }
+}
