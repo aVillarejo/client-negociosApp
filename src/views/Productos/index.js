@@ -9,7 +9,7 @@ import { ELIMINAR_PRODUCTO } from "../../graphql/mutations";
 import Tabla from "./Tabla";
 import Toolbar from "./ToolBar";
 import Paginador from "./Paginador";
-import ModalEliminar from '../../components/Modales/ModalEliminar'
+import ModalEliminar from "../../components/Modales/ModalEliminar";
 class Productos extends Component {
   state = {
     openModal: false,
@@ -57,7 +57,7 @@ class Productos extends Component {
         {({ loading, error, data, startPolling, stopPolling }) => {
           if (loading) return `Cargando.... <Spinner />`;
           if (error) return `Error: ${error.message}`;
-          //console.log(data);
+          console.log(data);
           const { list, total } = data;
           const totalProductos = Number(total);
 
@@ -74,7 +74,7 @@ class Productos extends Component {
                   <Card>
                     <CardBody>
                       <Toolbar
-                        title={"Listado de Productos"}
+                        title={"Listado de Productos original"}
                         total={totalProductos}
                         toogle={this.toggle}
                         onRadioBtnClick={this.onRadioBtnClick}

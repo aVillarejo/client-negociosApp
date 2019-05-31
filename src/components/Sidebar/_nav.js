@@ -26,7 +26,7 @@ export default {
     },
     {
       name: "Productos",
-      url: "/productos",
+      url: "/2productos",
       icon: "icon-notebook"
     },
     {
@@ -35,14 +35,19 @@ export default {
       icon: "fa-money fa"
     },
     {
-      name: "Empresas",
-      url: "/empresas",
+      name: "Grids",
+      url: "/grids",
       icon: "fa fa-suitcase"
     },
     {
       name: `Reportes`,
       url: "/reportes",
       icon: "fa fa-line-chart"
-    }
+    },
+    {
+      name: "Productos",
+      url: "/productos",
+      icon: "icon-notebook"
+    },
   ]
 };

@@ -75,18 +75,18 @@ const Tabla = props => {
   const { query } = props;
   return (
     <div className="table-responsive-md">
-      <Table hover style={{ minHeight: 100, marginTop: 20 }} xs="12">
+      <Table
+        striped
+        hover
+        responsive
+        style={{ minHeight: 100, marginTop: 40 }}
+        xs="12"
+      >
         <thead>
           <tr>
-            <th>
-              <strong>Nombre</strong>
-            </th>
-            <th>
-              <strong>Empresa</strong>
-            </th>
-            <th>
-              <strong>Tipo</strong>
-            </th>
+            <th>Nombre</th>
+            <th>Empresa</th>
+            <th>Tipo</th>
             <th />
           </tr>
         </thead>

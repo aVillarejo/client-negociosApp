@@ -9,29 +9,37 @@ import { ELIMINAR_CLIENTE } from "../../graphql/mutations";
 import Tabla from "./Tabla";
 import Toolbar from "./ToolBar";
 import Paginador from "./Paginador";
-class Clientes extends Component {
-  state = {
-    filter: {
-      dropdownOpen: false,
-      radioSelected: 1,
-      value: 10
-    }
-  };
 
-  toggle = () => {
+class Clientes extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+
+    this.state = {
+      filter: {
+        dropdownOpen: false,
+        radioSelected: 1,
+        value: 10
+      }
+    };
+  }
+
+  toggle() {
     this.setState({
       dropdownOpen: !this.state.filter.dropdownOpen
     });
-  };
+  }
 
-  onRadioBtnClick = (radioSelected, value) => {
+  onRadioBtnClick(radioSelected, value) {
     this.setState({
       filter: {
         radioSelected: radioSelected,
         value: value
       }
     });
-  };
+  }
   render() {
     return (
       <Query
@@ -41,7 +49,7 @@ class Clientes extends Component {
       >
         {({ loading, error, data, startPolling, stopPolling }) => {
           if (loading) return `Cargando.... <Spinner />`;
-          if (error) return console.log(`Error: ${error.message}`);
+          if (error) return `Error: ${error.message}`;
           console.log(data);
 
           const { list, total } = data;

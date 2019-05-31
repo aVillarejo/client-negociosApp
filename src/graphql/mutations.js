@@ -34,7 +34,7 @@ export const ELIMINAR_CLIENTE = gql`
 
 export const NUEVO_PRODUCTO = gql`
   mutation nuevoProducto($input: ProductoInput) {
-    nuevoProducto(input: $input) {
+    addProducto(input: $input) {
       id
       nombre
       precio
@@ -45,7 +45,7 @@ export const NUEVO_PRODUCTO = gql`
 
 export const ACTUALIZAR_PRODUCTO = gql`
   mutation actualizarProducto($input: ProductoInput) {
-    actualizarProducto(input: $input) {
+    modProducto(input: $input) {
       id
       nombre
       precio
@@ -56,6 +56,6 @@ export const ACTUALIZAR_PRODUCTO = gql`
 
 export const ELIMINAR_PRODUCTO = gql`
   mutation eliminarProducto($id: ID!) {
-    eliminarProducto(id: $id)
+    delProducto(id: $id)
   }
 `;

@@ -34,7 +34,7 @@ export const PRODUCTOS_QUERY = gql`
     list: getProductos(limite: $limite, offset: $offset) {
       id
       clave
-      nombre
+      descripcion
       stock
       precio
     }

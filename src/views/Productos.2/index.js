@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { Card, CardBody, Col, Row } from "reactstrap";
-import { Query, Mutation } from "react-apollo";
+import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
 
-import { CLIENTES_QUERY } from "../../graphql/queries";
-import { ELIMINAR_CLIENTE } from "../../graphql/mutations";
+import { PRODUCTOS_QUERY } from "../../graphql/queries";
+import { ELIMINAR_PRODUCTO } from "../../graphql/mutations";
 
 import Tabla from "./Tabla";
 import Toolbar from "./ToolBar";
 import Paginador from "./Paginador";
-class Clientes extends Component {
+import ModalEliminar from "../../components/Modales/ModalEliminar";
+class Productos extends Component {
   state = {
+    openModal: false,
+    id: "",
     filter: {
       dropdownOpen: false,
       radioSelected: 1,
@@ -23,7 +26,6 @@ class Clientes extends Component {
       dropdownOpen: !this.state.filter.dropdownOpen
     });
   };
-
   onRadioBtnClick = (radioSelected, value) => {
     this.setState({
       filter: {
@@ -32,36 +34,60 @@ class Clientes extends Component {
       }
     });
   };
+
+  handleOpenModal = (id = "") => {
+    this.setState({
+      openModal: !this.state.openModal,
+      id: id
+    });
+  };
+
+  handleResModal = callback => {
+    let { id } = this.state;
+    callback({ variables: { id } });
+  };
+
   render() {
     return (
       <Query
-        query={CLIENTES_QUERY}
+        query={PRODUCTOS_QUERY}
         pollInterval={500}
         variables={{ limite: this.state.filter.value, offset: 0 }}
       >
         {({ loading, error, data, startPolling, stopPolling }) => {
           if (loading) return `Cargando.... <Spinner />`;
-          if (error) return console.log(`Error: ${error.message}`);
+          if (error) return `Error: ${error.message}`;
           console.log(data);
-
           const { list, total } = data;
-          const totalClientes = Number(total);
+          const totalProductos = Number(total);
 
           return (
             <div className="animated fadeIn">
+              <ModalEliminar
+                isOpen={this.state.openModal}
+                handleOpenModal={this.handleOpenModal}
+                handleResModal={this.handleResModal}
+                query={ELIMINAR_PRODUCTO}
+              />
               <Row>
                 <Col lg={12} xs={12}>
                   <Card>
                     <CardBody>
                       <Toolbar
-                        title={"Listado de Clientes"}
-                        total={totalClientes}
+                        title={"Listado de Productos"}
+                        total={totalProductos}
                         toogle={this.toggle}
                         onRadioBtnClick={this.onRadioBtnClick}
                         active={this.state.filter}
                       />
-                      <Tabla source={list} query={ELIMINAR_CLIENTE} />
-                      <Paginador total={Number(total)} />
+                      <Tabla
+                        source={list}
+                        query={ELIMINAR_PRODUCTO}
+                        isOpen={this.state.openModal}
+                        handleOpenModal={this.handleOpenModal}
+                        handleResModal={this.handleResModal}
+                      />
+                      <Paginador total={totalProductos} />
                     </CardBody>
                   </Card>
                 </Col>
@@ -74,4 +100,4 @@ class Clientes extends Component {
   }
 }
 
-export default Clientes;
+export default Productos;

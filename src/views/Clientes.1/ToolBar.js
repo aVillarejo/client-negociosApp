@@ -10,7 +10,8 @@ import {
   FormGroup,
   InputGroup,
   InputGroupAddon,
-  Input
+  Input,
+  Container
 } from "reactstrap";
 
 const Toolbar = props => {
@@ -19,9 +20,7 @@ const Toolbar = props => {
     <Fragment>
       <Row className="mt-3 mr-1">
         <Col md="5" className="mb-0">
-          <CardTitle className="mb-0">
-            <h5>{props.title}</h5>
-          </CardTitle>
+          <CardTitle className="mb-0">{props.title}</CardTitle>
           <div className="small text-muted">Registros encontrados: {total}</div>
         </Col>
         <Col md="7" className="d-none d-sm-inline-block">
