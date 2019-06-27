@@ -13,9 +13,6 @@ import {
   Input
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
-
 const Toolbar = props => {
   const { total } = props;
   return (
@@ -28,17 +25,11 @@ const Toolbar = props => {
           <div className="small text-muted">Registros encontrados: {total}</div>
         </Col>
         <Col md="7" className="d-none d-sm-inline-block">
-        <Link
-              to="/admin/productos/nuevo"
-              // className="btn btn-success"
-              // style={{ color: "white" }}
-            >
-        <Button color="primary" className="float-right">
+          <Button color="primary" className="float-right">
             <i className="icon-plus" /><span className="mx-1">
               Añadir
             </span>
           </Button>
-            </Link>
 
           <ButtonToolbar
             className="float-right"

@@ -1,12 +1,25 @@
 import gql from "graphql-tag";
 
+export const USUARIOS_QUERY = gql`
+  query getUsuarios($limite: Int, $offset: Int) {
+    list: getUsuarios(limite: $limite, offset: $offset) {
+      id
+      nombre
+      apellido
+      usuario
+    }
+    total: totalUsuarios
+  }
+`;
+
 export const CLIENTES_QUERY = gql`
   query getClientes($limite: Int, $offset: Int) {
     list: getClientes(limite: $limite, offset: $offset) {
       id
       nombre
       apellido
-      empresa
+      usuario
+      telefono
       tipo
     }
     total: totalClientes
@@ -52,4 +65,11 @@ export const PRODUCTO_QUERY = gql`
       stock
     }
   }
+`;
+
+
+export const LOGIN_QUERY = gql`
+query login ($usuario: String, $password: String){
+  login(usuario:$usuario, password: $password)
+}
 `;

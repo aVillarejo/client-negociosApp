@@ -48,7 +48,9 @@ function ItemRow(props) {
         <Link
           className="btn btn-primary mr-2"
           style={styles.buttonFont}
-          to={`/productos/editar/${id}`}
+          to={`/admin/productos/editar/${id}`}
+
+
         >
           <i className="fa fa-pencil-square-o fa-lg mr-1" />
           <span className="d-none d-md-inline-block"> Editar</span>

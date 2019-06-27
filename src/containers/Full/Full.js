@@ -9,13 +9,17 @@ import Footer from "../../components/Footer/";
 
 //Views
 import Dashboard from "../../views/Dashboard/";
+
 import Clientes from "../../views/Clientes/";
 
-import Productos2 from "../../views/Productos1/";
-import EditarProducto2 from "../../views/Productos1/EditarProducto";
+import Usuarios from "../../views/Usuarios/";
 
-import Productos from "../../views/Productos/";
-import EditarProducto from "../../views/Productos/EditarProducto";
+import Ventas from "../../views/Ventas/";
+
+import Productos from "../../views/Productos1/";
+import EditarProducto from "../../views/Productos1/EditarProducto";
+import NuevoProducto from "../../views/Productos1/NuevoProducto";
+
 
 import GridsPage from "../../views/Grids/"
 class Full extends Component {
@@ -29,19 +33,24 @@ class Full extends Component {
             <Breadcrumb />
             <Container fluid>
               <Switch>
-                <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-                <Route path="/clientes" exact name="Clientes" component={Clientes} />
-                {/* <Route path="/clientes/editar/:id" exact name="Editar Cliente" component={EditarCliente} /> */}
-                <Route path="/2productos" exact name="Productos" component={Productos2} />
-                {/* <Route exact path="/productos/nuevo" component={NuevoProducto} /> */}
-                <Route path="/2productos/editar/:id" exact  component={EditarProducto2} />
+                <Route path="/admin/dashboard" name="Dashboard" component={Dashboard} />
 
-                <Route path="/productos" exact name="Productos" component={Productos} />
-                <Route path="/productos/editar/:id" exact  component={EditarProducto} />
+                <Route path="/admin/clientes" exact name="Clientes" component={Clientes} />
+                {/* <Route path="/clientes/editar/:id" exact name="Editar Cliente" component={EditarCliente} />                     */}
+                
+                <Route path="/admin/usuarios" exact name="Usuarios" component={Usuarios} />
+                
+                {/* <Route path="/admin/2productos/editar/:id" exact  component={EditarProducto2} /> 
+                <Route path="/admin/2productos" exact name="Productos" component={Productos} />*/}
+                <Route path="/admin/productos" exact name="Productos" component={Productos} />  
+                <Route path="/admin/productos/editar/:id" exact  component={EditarProducto} />
+                <Route path="/admin/productos/nuevo" exact component={NuevoProducto} />
 
-                <Route path="/grids" exact name="Grids" component={GridsPage} />
+                <Route path="/admin/ventas" exact name="Ventas" component={Ventas} />  
 
-                <Redirect from="/" to="/dashboard" />
+                <Route path="/admin/grids" name="Grids" component={GridsPage} />
+
+                <Redirect from="/admin" to="/admin/dashboard" />
               </Switch>
             </Container>
           </main>

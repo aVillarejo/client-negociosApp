@@ -16,10 +16,10 @@ class EditarProducto extends Component {
               <CardBody>
                 <Row className="mt-3 mr-1">
                   <Col md="5" className="mb-0">
-                    <CardTitle className="mb-0">EDITAR CLIENTE</CardTitle>
-                    <div className="small text-muted">
+                    <CardTitle className="mb-0">Editar Producto</CardTitle>
+                    {/* <div className="small text-muted">
                       Registros encontrados:
-                    </div>
+                    </div> */}
                   </Col>
                 </Row>
 

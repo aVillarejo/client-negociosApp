@@ -26,21 +26,27 @@ export const ACTUALIZAR_CLIENTE = gql`
   }
 `;
 
-export const ELIMINAR_CLIENTE = gql`
-  mutation eliminarCliente($id: ID!) {
-    delCliente(id: $id)
+export const ELIMINAR_USUARIO = gql`
+  mutation deleteUser($id: ID!) {
+    deleteUser(id: $id)
   }
 `;
 
-export const NUEVO_PRODUCTO = gql`
-  mutation nuevoProducto($input: ProductoInput) {
-    addProducto(input: $input) {
-      id
-      nombre
-      precio
-      stock
-    }
+export const ADD_PRODUCTO = gql`
+  mutation addProducto($input:ProductoInput!){
+  addProducto(input:$input){
+    id
+    clave
+    descripcion
+    marca
+    so
+    memoria
+    stock
+    precio
+    costo
+    url
   }
+}
 `;
 
 export const ACTUALIZAR_PRODUCTO = gql`

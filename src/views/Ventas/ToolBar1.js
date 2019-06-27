@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Component } from "react";
 import {
   Col,
   Row,
@@ -13,32 +13,19 @@ import {
   Input
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
-
 const Toolbar = props => {
   const { total } = props;
   return (
-    <Fragment>
-      <Row className="mt-3 mr-1">
-        <Col md="5" className="mb-0">
-          <CardTitle className="mb-0">
-            <h5>{props.title}</h5>
-          </CardTitle>
-          <div className="small text-muted">Registros encontrados: {total}</div>
-        </Col>
-        <Col md="7" className="d-none d-sm-inline-block">
-        <Link
-              to="/admin/productos/nuevo"
-              // className="btn btn-success"
-              // style={{ color: "white" }}
-            >
-        <Button color="primary" className="float-right">
-            <i className="icon-plus" /><span className="mx-1">
-              Añadir
-            </span>
+    <Row>
+      <Col lg="5" md="6" sm="12" className="mb-3">
+        <CardTitle className="mb-0">{props.title}</CardTitle>
+        <div className="small text-muted">Registros encontrados: {total} </div>
+      </Col>
+      <Col lg="7" md="6" className="d-none d-sm-inline-block">
+        <Col md="auto">
+          <Button color="primary" className="float-right">
+            <i className="icon-plus" />
           </Button>
-            </Link>
 
           <ButtonToolbar
             className="float-right"
@@ -69,13 +56,16 @@ const Toolbar = props => {
             </ButtonGroup>
           </ButtonToolbar>
         </Col>
-      </Row>
-      <Row className="mt-4 ml-2 mr-2">
-        <Col sm={{ size: "6", offset: 6 }}>
+        <Col md="12">
           <Form action="" method="post" className="form-horizontal">
             <FormGroup row>
               <InputGroup>
-                <Input type="text" name="busqueda" placeholder="Nombre" />
+                <Input
+                  type="email"
+                  id="input2-group2"
+                  name="input2-group2"
+                  placeholder="Email"
+                />
                 <InputGroupAddon addonType="append">
                   <Button type="button" color="primary">
                     <i className="fa fa-search" /> Search
@@ -85,8 +75,8 @@ const Toolbar = props => {
             </FormGroup>
           </Form>
         </Col>
-      </Row>
-    </Fragment>
+      </Col>
+    </Row>
   );
 };
 

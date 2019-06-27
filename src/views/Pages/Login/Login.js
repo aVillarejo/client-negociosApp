@@ -20,30 +20,32 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
+import { Query } from "react-apollo";
+
 import "./style.css";
 import "./css/style.css";
 import loginlogo from "./images/login_logo.png";
 import bg from "./images/bg.jpg";
+import { runInThisContext } from "vm";
+
+import { LOGIN_QUERY } from "../../../graphql/queries";
 
 class Login extends Component {
   state = {
-    email: "",
+    usuario:"",
     password: "",
-    validate: {
-      emailState: ""
-    }
   };
 
-  validateEmail = e => {
-    const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const { validate } = this.state;
-    if (emailRex.test(e.target.value)) {
-      validate.emailState = "has-success";
-    } else {
-      validate.emailState = "has-danger";
-    }
-    this.setState({ validate });
-  };
+  // validateEmail = e => {
+  //   const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //   const { validate } = this.state;
+  //   if (emailRex.test(e.target.value)) {
+  //     validate.emailState = "has-success";
+  //   } else {
+  //     validate.emailState = "has-danger";
+  //   }
+  //   this.setState({ validate });
+  // };
 
   handleChange = async event => {
     // console.log(event.target.name);
@@ -58,11 +60,11 @@ class Login extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    console.log(`Email: ${this.state.email}`);
+
   };
 
   render() {
-    const { email, password } = this.state;
+    const { usuario, password } = this.state;
     return (
       // <div className="app justify-content-center ">
       <div
@@ -79,7 +81,7 @@ class Login extends Component {
               <div className="top-content-style">
                 <img src={loginlogo} alt="" style={{ maxWidth: "35%" }} />
               </div>
-              <form action="#" method="post">
+              <form onSubmit={this.submitForm} method="post">
                 <p className="legend">Iniciar Sesion</p>
 
                 <FormGroup>
@@ -89,10 +91,22 @@ class Login extends Component {
                         <i className="icon-user" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input valid={null} />
+                    
+                    <Input
+                      type="text"
+                      placeholder="Usuario"
+                      name="usuario"
+                      value={usuario}
+                      // valid={this.state.validate.emailState === "has-success"}
+                      // invalid={this.state.validate.emailState === "has-danger"}
+                      onChange={e => {
+                        // this.validateEmail(e);
+                        this.handleChange(e);
+                      }}
+                    />
+
+
                   </InputGroup>
-                  <FormFeedback valid="true">NO VALIDO</FormFeedback>
-                  <FormFeedback invalid="true">NO VALIDO</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                   <InputGroup className="mb-3">
@@ -101,10 +115,23 @@ class Login extends Component {
                         <i className="icon-lock" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input valid={null} />
+                    
+                    <Input
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      value={password}
+                      // valid={this.state.validate.emailState === "has-success"}
+                      // invalid={this.state.validate.emailState === "has-danger"}
+                      onChange={e => {
+                        // this.validateEmail(e);
+                        this.handleChange(e);
+                      }}
+                    />
+
                   </InputGroup>
                   <FormText className=" d-flex flex-row-reverse ">
-                    <Link to={`/`}>
+                    <Link to={`/admin`}>
                       <span>Olvide mi contraseña</span>
                     </Link>
                   </FormText>
@@ -161,7 +188,9 @@ class Login extends Component {
                 <Row className="mt-5">
                   <Col xs="12">
                     <Button color="primary" className="px-4">
-                      Acceder
+                      <Link to={`/admin`}>
+                        <span>Acceder</span>
+                      </Link>
                     </Button>
                   </Col>
                 </Row>

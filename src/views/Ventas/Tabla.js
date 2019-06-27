@@ -61,14 +61,14 @@ function ItemRow(props) {
       </td> */}
 
       <td style={styles.finalRow}>
-        {/* <a
+        <a
           className="btn btn-primary mr-2"
           style={styles.buttonFont}
           href={itemLink}
         >
           <i className="fa fa-pencil-square-o fa-lg mr-1" />
           <span className="d-none d-md-inline-block"> Editar</span>
-        </a> */}
+        </a>
 
         <BtnEliminar query={props.query} id={id} />
       </td>

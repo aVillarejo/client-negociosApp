@@ -4,13 +4,17 @@ import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 
 import { CLIENTES_QUERY } from "../../graphql/queries";
-import { ELIMINAR_CLIENTE } from "../../graphql/mutations";
+import { ELIMINAR_USUARIO } from "../../graphql/mutations";
 
 import Tabla from "./Tabla";
-import Toolbar from "./ToolBar";
-import Paginador from "./Paginador";
+import Toolbar from "../../components/Util/Toolbar";
+import Paginador from "../../components/Util/Paginador";
 class Clientes extends Component {
   state = {
+    paginador: {
+      offset: 0,
+      actual: 1
+    },
     filter: {
       dropdownOpen: false,
       radioSelected: 1,
@@ -32,12 +36,32 @@ class Clientes extends Component {
       }
     });
   };
+
+  paginaAnt = () => {
+    console.log("pagina Anteror");
+    this.setState({
+      paginador: {
+        offset: this.state.paginador.offset - this.state.filter.value,
+        actual: this.state.paginador.actual - 1
+      }
+    });
+  };
+
+  paginaSig = () => {
+    console.log("pagina Siguiente");
+    this.setState({
+      paginador: {
+        offset: this.state.paginador.offset + this.state.filter.value,
+        actual: this.state.paginador.actual + 1
+      }
+    });
+  };
   render() {
     return (
       <Query
         query={CLIENTES_QUERY}
         pollInterval={500}
-        variables={{ limite: this.state.filter.value, offset: 0 }}
+        variables={{ limite: this.state.filter.value, offset: this.state.paginador.offset }}
       >
         {({ loading, error, data, startPolling, stopPolling }) => {
           if (loading) return `Cargando.... <Spinner />`;
@@ -45,7 +69,7 @@ class Clientes extends Component {
           console.log(data);
 
           const { list, total } = data;
-          const totalClientes = Number(total);
+          const _total = Number(total);
 
           return (
             <div className="animated fadeIn">
@@ -55,13 +79,20 @@ class Clientes extends Component {
                     <CardBody>
                       <Toolbar
                         title={"Listado de Clientes"}
-                        total={totalClientes}
+                        total={_total}
                         toogle={this.toggle}
                         onRadioBtnClick={this.onRadioBtnClick}
                         active={this.state.filter}
+                      /> 
+                      <Tabla source={list} query={ELIMINAR_USUARIO} />
+                      {/* <Paginador total={Number(total)} /> */}
+                      <Paginador
+                        actual={this.state.paginador.actual}
+                        total={_total}
+                        limite={this.state.filter.value}
+                        paginaAnterior={this.paginaAnt}
+                        paginaSiguiente={this.paginaSig}
                       />
-                      <Tabla source={list} query={ELIMINAR_CLIENTE} />
-                      <Paginador total={Number(total)} />
                     </CardBody>
                   </Card>
                 </Col>

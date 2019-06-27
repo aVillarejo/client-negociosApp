@@ -1,18 +1,18 @@
 const routes = {
-  "/": "Home",
-  "/dashboard": "Dashboard",
-  "/grids": "CSS GRIDS",
+  "/admin/": "Home",
+  "/admin/dashboard": "Dashboard",
+  "/admin/grids": "CSS GRIDS",
   //Rutas Usuarios
-  "/usuarios": "Usuarios",
-  "/usuarios/:id": "Datos Usuario",
+  "/admin/usuarios": "Usuarios",
+  "/admin/usuarios/:id": "Datos Usuario",
   //Rutas Productos
-  "/productos": "Productos",
-  "/productos/editar/:id": "Editar Producto",
+  "/admin/productos": "Productos",
+  "/admin/productos/editar/:id": "Editar Producto",
 
-  "/2productos": "Productos",
-  "/2productos/editar/:id": "Editar Producto",
+  "/admin/2productos": "Productos",
+  "/admin/2productos/editar/:id": "Editar Producto",
   //Rutas Clientes
-  "/clientes": "Clientes",
-  "/clientes/editar/:id": "Editar Cliente"
+  "/admin/clientes": "Clientes",
+  "/admin/clientes/editar/:id": "Editar Cliente"
 };
 export default routes;

@@ -2,7 +2,7 @@ export default {
   items: [
     {
       name: "Panel de Control",
-      url: "/dashboard",
+      url: "/admin/dashboard",
       icon: "icon-speedometer",
       badge: {
         variant: "info",
@@ -21,33 +21,34 @@ export default {
     },
     {
       name: "Clientes",
-      url: "/clientes",
+      url: "/admin/clientes",
       icon: "icon-people"
     },
     {
-      name: "Productos",
-      url: "/2productos",
-      icon: "icon-notebook"
-    },
-    {
-      name: "Pedidos",
-      url: "/pedidos",
-      icon: "fa-money fa"
-    },
-    {
-      name: "Grids",
-      url: "/grids",
+      name: "Usuarios",
+      url: "/admin/usuarios",
       icon: "fa fa-suitcase"
     },
     {
-      name: `Reportes`,
-      url: "/reportes",
-      icon: "fa fa-line-chart"
-    },
-    {
       name: "Productos",
-      url: "/productos",
+      url: "/admin/productos",
       icon: "icon-notebook"
     },
+    {
+      name: "Ventas",
+      url: "/admin/ventas",
+      icon: "fa-money fa"
+    },
+    // {
+    //   name: "Grids",
+    //   url: "/admin/grids",
+    //   icon: "fa fa-suitcase"
+    // },
+    // {
+    //   name: `Reportes`,
+    //   url: "/admin/reportes",
+    //   icon: "fa fa-line-chart"
+    // },
+    
   ]
 };

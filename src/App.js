@@ -20,6 +20,7 @@ import ApolloClient, { InMemoryCache } from "apollo-boost";
 
 // Containers
 import Full from "./containers/Full/";
+import Dash from "./containers/Client/DashboardClientes";
 
 // Views
 import Login from "./views/Pages/Login/";
@@ -47,11 +48,12 @@ export default class App extends Component {
       <ApolloProvider client={APOLLO_CLIENT}>
         <HashRouter>
           <Switch>
-            <Route exact path="/login" name="Login Page" component={Login} />
-            <Route exact path="/register" name="Register Page" component={Register}/>
+            <Route exact path="/" name="Login Page" component={Login} />
+            <Route exact path="/registro" name="Register Page" component={Register}/>
             <Route exact path="/404" name="Page 404" component={Page404} />
             <Route exact path="/500" name="Page 500" component={Page500} />
-            <Route path="/" name="Home" component={Full} />
+            {/* <Route path="/app" name="App" component={Dash} /> */}
+            <Route path="/admin" name="Admin" component={Full} />
           </Switch>
         </HashRouter>
       </ApolloProvider>
