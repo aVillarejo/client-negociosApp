@@ -46,7 +46,7 @@
     "graphql": "14.1.1",
     "graphql-tag": "2.10.1",
     "history": "4.7.2",
-    "jquery": "3.3.1",
+    "jquery": "3.4.1",
     "react": "16.8.6",
     "react-apollo": "2.4.1",
     "react-chartjs-2": "2.7.0",
